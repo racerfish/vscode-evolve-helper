@@ -1,5 +1,3 @@
-<img src="https://user-images.githubusercontent.com/10193428/102238085-aa4cc680-3ef5-11eb-826f-a9de7c58b151.png" width="150px">
-
 # Evolve Helpers for VSCode
 
 This is a set of tools for development in a Evolve CMS project.
@@ -13,6 +11,20 @@ This is a set of tools for development in a Evolve CMS project.
 
 - Adds context menu items for:
     - Deploying a single file with a click
+
+
+### Screenshots
+#### Registered commands
+<img src="./images/screenshot-1.png">
+
+#### Deploying a project
+<img src="./images/screenshot-2.png">
+
+#### Running registered Envoy commands
+<img src="./images/screenshot-3.png">
+
+#### Right-click to deploy a single file
+<img src="./images/screenshot-4.png">
 
 ## Requirements
 
