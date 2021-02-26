@@ -20,6 +20,9 @@ This is a set of tools for development in a Evolve CMS project.
 #### Deploying a project
 <img src="https://raw.githubusercontent.com/racerfish/vscode-evolve-helper/master/images/screenshot-2.png">
 
+#### Extend existing components
+<img src="https://raw.githubusercontent.com/racerfish/vscode-evolve-helper/master/images/screenshot-5.png">
+
 #### Running registered Envoy commands
 <img src="https://raw.githubusercontent.com/racerfish/vscode-evolve-helper/master/images/screenshot-3.png">
 
