@@ -2,7 +2,7 @@
 	"name": "evolve-helpers",
 	"displayName": "Evolve Helpers",
 	"description": "A set of useful tools to work with Evolve CMS",
-	"version": "1.4.1",
+	"version": "1.5.0",
 	"keywords": [
 		"evolve",
 		"cms",
