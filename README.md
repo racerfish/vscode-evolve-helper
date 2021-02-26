@@ -15,16 +15,16 @@ This is a set of tools for development in a Evolve CMS project.
 
 ### Screenshots
 #### Registered commands
-<img src="./images/screenshot-1.png">
+<img src="https://raw.githubusercontent.com/racerfish/vscode-evolve-helper/master/images/screenshot-1.png">
 
 #### Deploying a project
-<img src="./images/screenshot-2.png">
+<img src="https://raw.githubusercontent.com/racerfish/vscode-evolve-helper/master/images/screenshot-2.png">
 
 #### Running registered Envoy commands
-<img src="./images/screenshot-3.png">
+<img src="https://raw.githubusercontent.com/racerfish/vscode-evolve-helper/master/images/screenshot-3.png">
 
 #### Right-click to deploy a single file
-<img src="./images/screenshot-4.png">
+<img src="https://raw.githubusercontent.com/racerfish/vscode-evolve-helper/master/images/screenshot-4.png">
 
 ## Requirements
 
