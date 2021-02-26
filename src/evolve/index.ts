@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
-import { existsSync, readFileSync } from "fs"
+import { existsSync } from "fs"
 import { join } from "path"
-import { parseLaraveConfig } from '../util';
 
 export function isEvolveProject() {
     if (!vscode.workspace.workspaceFolders) {

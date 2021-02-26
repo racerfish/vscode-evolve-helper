@@ -2,12 +2,13 @@ import { EOL } from 'os';
 import * as vscode from 'vscode';
 import { isEvolveProject } from './evolve';
 import { deploy, deployFile } from './evolve/deploy';
-import { runOnServer } from './evolve/terminal';
-import { getOrCreateTerminal } from './evolve/terminal';
+import { runOnServer, getOrCreateTerminal } from './evolve/terminal';
+import { ComponentDefinition, createComponent } from "./evolve/component";
 import { getProcessOutput, registerAndPushCommand } from './util';
+import { copyFileSync } from 'fs';
+import { basename, join } from 'path';
+import slugify from 'slugify';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	if (!vscode.workspace.workspaceFolders) {
 		console.log('No workspace found, terminating extension')
@@ -79,6 +80,56 @@ export function activate(context: vscode.ExtensionContext) {
 
 			terminal.sendText(`./vendor/laravel/envoy/bin/envoy run ${task.task}`)
 			terminal.show()
+		}
+	})
+
+	registerAndPushCommand(context, 'evolve-helpers.component.create', async () => {
+		const name = await vscode.window.showInputBox({
+			prompt: 'Enter a component name',
+			placeHolder: 'Name of an existing or new component *.yaml definition',
+		})
+
+		if (name) {
+			const component: ComponentDefinition = {
+				name: 'A new component',
+				component: 'custom.' + slugify(name),
+				icon: 'fad fa-cubes',
+				block: true,
+				media: false,
+				fields: [
+					{
+						type: 'string',
+						label: 'Titel',
+						name: 'title'
+					}
+				]
+			}
+
+			const componentUri = createComponent(name, component)
+
+			if (componentUri) {
+				vscode.window.showTextDocument(componentUri)
+			}
+		}
+	})
+
+	registerAndPushCommand(context, 'evolve-helpers.component.extend', async () => {
+		const files = await vscode.workspace.findFiles(`vendor/**/config/components/*.yaml`)
+
+		const selected = await vscode.window.showQuickPick(files.map(file => ({
+			label: basename(file.fsPath, '.yaml'),
+			detail: file.fsPath.replace(workspacePath + '/', ''),
+			file,
+		})), {
+			canPickMany: false,
+			placeHolder: 'Choose a component to extend'
+		})
+
+		if (selected) {
+			const componentFilePath = join(workspacePath, `config/components/${slugify(selected.label)}.yaml`)
+
+			copyFileSync(selected.file.fsPath, componentFilePath)
+			vscode.window.showTextDocument(vscode.Uri.file(componentFilePath))
 		}
 	})
 }
