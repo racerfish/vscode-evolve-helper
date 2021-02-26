@@ -2,7 +2,14 @@
 	"name": "evolve-helpers",
 	"displayName": "Evolve Helpers",
 	"description": "A set of useful tools to work with Evolve CMS",
-	"version": "0.0.1",
+	"version": "1.0.0",
+	"keywords": ["evolve", "cms", "racerfish"],
+	"publisher": "Racerfish",
+	"icon": "logo.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/racerfish/vscode-evolve-helper"
+	},
 	"engines": {
 		"vscode": "^1.53.0"
 	},
