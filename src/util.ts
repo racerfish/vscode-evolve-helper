@@ -1,4 +1,5 @@
-import { close } from 'fs';
+import { mkdirSync } from 'fs';
+import { dirname } from 'path';
 import * as vscode from 'vscode';
 
 export interface EvolveConfig {
@@ -58,5 +59,11 @@ export async function getProcessOutput(command: string): Promise<string> {
                 return resolve(stdout)
             }
         })
+    })
+}
+
+export function assurePathExists(path: string) {
+    mkdirSync(dirname(path), {
+        recursive: true
     })
 }

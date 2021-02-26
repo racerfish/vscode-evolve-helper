@@ -4,7 +4,7 @@ import { isEvolveProject } from './evolve';
 import { deploy, deployFile } from './evolve/deploy';
 import { runOnServer, getOrCreateTerminal } from './evolve/terminal';
 import { ComponentDefinition, createComponent } from "./evolve/component";
-import { getProcessOutput, registerAndPushCommand } from './util';
+import { assurePathExists, getProcessOutput, registerAndPushCommand } from './util';
 import { copyFileSync } from 'fs';
 import { basename, join } from 'path';
 import slugify from 'slugify';
@@ -128,6 +128,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if (selected) {
 			const componentFilePath = join(workspacePath, `config/components/${slugify(selected.label)}.yaml`)
 
+			assurePathExists(componentFilePath)
 			copyFileSync(selected.file.fsPath, componentFilePath)
 			vscode.window.showTextDocument(vscode.Uri.file(componentFilePath))
 		}

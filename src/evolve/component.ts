@@ -3,6 +3,7 @@ import { join } from "path"
 import slugify from "slugify"
 import { dump } from "js-yaml";
 import { writeFileSync } from 'fs';
+import { assurePathExists } from '../util';
 
 export interface ComponentDefinition {
     name: string
@@ -29,6 +30,7 @@ export function createComponent(name: string, component: ComponentDefinition) {
     const componentYamlData = dump(component)
     const componentFilePath = join(workspacePath, `config/components/${slugify(name)}.yaml`)
 
+    assurePathExists(componentFilePath)
     writeFileSync(componentFilePath, componentYamlData)
 
     return vscode.Uri.file(componentFilePath)
